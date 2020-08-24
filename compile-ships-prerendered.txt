@@ -1,0 +1,128 @@
+//compile file for PROTOTYPES
+
+//This compileguide version will attempt to
+//Here goes.
+
+//First file mentioned is actually the output file:
+#output prototypes.js
+#setflag onlySchedulerTick false
+//Structure:
+
+//-----------------------------------------------------------------------------------
+
+\init\startup.js
+
+//Settings that can only be applied at the start, put at the top to make them easier to edit
+\init\startSettings.js
+
+//Useful functions of all sorts
+\core\util.js
+
+//Lore crap
+\data\companies.js
+
+//Basic settings, including this.options and vocabulary
+\modsys\settings.js
+
+\init\prerendered\prerenderSP.js
+\init\prerendered\misc.js
+
+//Global assets - definitions of control points and bases
+\data\assets.js
+
+//Globals - to be refactored
+\init\globals.js
+
+\modsys\scheduler.js
+
+\core\prototypesCore.js
+
+#preprocessorSetMarker //$fileTape
+
+#setFlag prerender
+
+//Here are them ships:
+#includePreprocessed \ships\inferno.js
+#includePreprocessed \ships\burstcharger.js
+#includePreprocessed \ships\unstablecore.js
+#includePreprocessed \ships\stinger.js
+#includePreprocessed \ships\longlegs.js
+#includePreprocessed \ships\niteracer.js
+#includePreprocessed \ships\flea.js
+#includePreprocessed \ships\swordnshield.js
+#includePreprocessed \ships\brrrt.js
+#includePreprocessed \ships\linker.js
+#includePreprocessed \ships\sidewinder.js
+#includePreprocessed \ships\splitter.js
+#includePreprocessed \ships\dblast.js
+#includePreprocessed \ships\onmypos.js
+#includePreprocessed \ships\cupoladef.js
+#includePreprocessed \ships\hotswap.js
+#includePreprocessed \ships\lobster.js
+#includePreprocessed \ships\turtle.js
+#includePreprocessed \ships\umonitor.js
+#includePreprocessed \ships\avalanche.js
+#includePreprocessed \ships\fivestars.js
+#includePreprocessed \ships\stealth1.js
+#includePreprocessed \ships\harbinger.js
+#includePreprocessed \ships\wyvern-malefor.js
+#includePreprocessed \ships\shadow-phoenix.js
+#includePreprocessed \ships\virtualblade.js
+#includePreprocessed \ships\fusionburner.js
+//all HS in a single file for now, though i am considering splitting them.
+#includePreprocessed \ships\hyperspeedsters.js
+
+\init\finalizeShipData.js
+
+//Iterate over all ships and apply changes
+//\init\balanceShips.js
+
+//Declarations of status effect types
+\systems\statusEffects\statusEffects.js
+//Declarations of GPO types
+\systems\GPO\gamePlayObjects.js
+//Two similar, yet different systems, keeping track of what's happening
+\systems\killFeed\killFeed.js
+\systems\playerLog\playerLog.js
+
+\systems\globalChat\globalChat.js
+
+\systems\aliveBooster\aliveBooster.js
+
+//UI System, along with all them screens
+\systems\UI\UI.js
+\systems\UI\\UITools.js
+\systems\UIScreens\main\mainScreen.js
+\systems\UIScreens\mainMenu\mainMenuScreen.js
+\systems\UIScreens\skinSelector\skinSelectorScreen.js
+\systems\UIScreens\shipSelectorLegacy\shipSelectorScreen.js
+\systems\UIScreens\roundsLog\roundsLogScreen.js
+\systems\UIScreens\SPPBrowser\SPPBrowserScreen.js
+\systems\UIScreens\intro\introSequence.js
+\systems\UIScreens\shipHangar\shipHangarScreen.js
+\systems\UIScreens\shipHangar\shipHangarScreenPages.js
+
+//Tips system shows a random tip every 5 seconds at the bottom of the screen
+\systems\tip\tip.js
+
+\systems\hangars\hangars.js
+
+//Celebration upon game end
+\systems\celebration\celebration.js
+
+//Capture Points mode, the oldest and most solid SP mode
+\modes\capturePoints\capturePointsMode.js
+
+\data\maps.js
+\systems\shipManager\shipManager.js
+
+//this.tick, this.event and everySecond loop
+\modsys\main.js
+
+//\moddingUIEnhancement\moddingUIEnhancement.js
+
+//SPPages for SPPB - credits, wiki, etc.
+//\data\SPPages.js
+
+//Shit that needs to execute after everything else
+\init\finalization.js

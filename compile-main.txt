@@ -1,0 +1,145 @@
+//compile file for PROTOTYPES
+
+//Why: SP is 6k lines long. That is ridiculous, unwieldy and confusing, and is
+//the reason of many bugs. When navigating a 6k lines file, one doesn't think
+//"how can i improve this?" - no, one does minimal edits just to get it working.
+
+//That is not acceptable. And thus, i am splitting SP into multiple files. Not
+//at all a new idea - people have been doing this since the dawn of computing.
+//And yet it took me 3-something months to get to this point. In hindsight,
+//i should've done it a long, long time ago.
+
+//How: probably could've reused existing compilers somehow, but nah, fk that.
+//Instead, wrote my own node.js script that does the job. It can be improved,
+//but it works well enough for now.
+
+//Here goes.
+
+//First file mentioned is actually the output file:
+#output prototypes.js
+
+#preprocessorSetMarker //$fileTape
+#setFlag prerenderable
+
+//Structure:
+
+//-----------------------------------------------------------------------------------
+
+\init\startup.js
+
+//Settings that can only be applied at the start, put at the top to make them easier to edit
+\init\startSettings.js
+
+//Useful functions of all sorts
+#includePreprocessed \core\util.js
+
+//Lore crap
+\data\companies.js
+
+//Basic settings, including this.options and vocabulary
+\modsys\settings.js
+
+//Global assets - definitions of control points and bases
+\data\assets.js
+
+//Globals - to be refactored
+\init\globals.js
+
+\modsys\scheduler.js
+
+\core\prototypesCore.js
+
+//Here are them ships:
+\ships\inferno.js
+\ships\burstcharger.js
+\ships\unstablecore.js
+\ships\stinger.js
+\ships\longlegs.js
+\ships\niteracer.js
+\ships\flea.js
+\ships\swordnshield.js
+\ships\brrrt.js
+\ships\linker.js
+\ships\sidewinder.js
+\ships\splitter.js
+\ships\dblast.js
+\ships\onmypos.js
+\ships\cupoladef.js
+\ships\hotswap.js
+\ships\lobster.js
+\ships\turtle.js
+\ships\umonitor.js
+\ships\avalanche.js
+\ships\fivestars.js
+\ships\stealth1.js
+\ships\harbinger.js
+\ships\wyvern-malefor.js
+\ships\shadow-phoenix.js
+\ships\virtualblade.js
+\ships\fusionburner.js
+//all HS in a single file for now, though i am considering splitting them.
+\ships\hyperspeedsters.js
+
+#ifflag includedebugships elsejump debugShipsAfter
+
+\debug\ships\vanilla.js
+\debug\ships\u-series.js
+
+:debugShipsAfter
+
+\init\finalizeShipData.js
+
+//Iterate over all ships and apply changes
+\init\balanceShips.js
+
+//Declarations of status effect types
+\systems\statusEffects\statusEffects.js
+//Declarations of GPO types
+\systems\GPO\gamePlayObjects.js
+
+//Two similar, yet different systems, keeping track of what's happening
+\systems\killFeed\killFeed.js
+\systems\playerLog\playerLog.js
+
+\systems\globalChat\globalChat.js
+
+\systems\aliveBooster\aliveBooster.js
+
+//UI System, along with all them screens
+\systems\UI\UI.js
+\systems\UI\\UITools.js
+\systems\UIScreens\main\mainScreen.js
+\systems\UIScreens\mainMenu\mainMenuScreen.js
+\systems\UIScreens\skinSelector\skinSelectorScreen.js
+\systems\UIScreens\shipSelectorLegacy\shipSelectorScreen.js
+\systems\UIScreens\roundsLog\roundsLogScreen.js
+\systems\UIScreens\SPPBrowser\SPPBrowserScreen.js
+\systems\UIScreens\intro\introSequence.js
+\systems\UIScreens\shipHangar\shipHangarScreen.js
+\systems\UIScreens\shipHangar\shipHangarScreenPages.js
+
+//Tips system shows a random tip every 5 seconds at the bottom of the screen
+\systems\tip\tip.js
+
+\systems\hangars\hangars.js
+
+//Celebration upon game end
+\systems\celebration\celebration.js
+
+//Capture Points mode, the oldest and most solid SP mode
+\modes\capturePoints\capturePointsMode.js
+
+\data\maps.js
+
+\systems\shipManager\shipManager.js
+
+//this.tick, this.event and everySecond loop
+#includePreprocessed \modsys\main.js
+
+//\moddingUIEnhancement\moddingUIEnhancement.js
+
+//SPPages for SPPB - credits, wiki, etc.
+\data\SPPages.js
+
+//Shit that needs to execute after everything else
+\init\finalization.js
